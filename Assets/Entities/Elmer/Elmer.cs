@@ -10,7 +10,21 @@ public class Elmer : MonoBehaviour
 
     public bool MovingRight = true;
 
+    public bool ElmerFiring = true;
 
+    public GameObject Bullet;
+
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Instantiate(Bullet, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        Debug.Log("Score");
+    }
+    
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +64,17 @@ public class Elmer : MonoBehaviour
         {
             MovingRight = !MovingRight;
         }
+
+        
+
+        if (Random.value < 0.001f)
+        {
+            Instantiate(Bullet, transform.position, Quaternion.identity);
+        }
+
+
+
+
+
     }
 }
